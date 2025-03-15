@@ -69,11 +69,11 @@ const floatingAnimation = {
 
 export default function Hardware() {
   return (
-    <div className="bg-[#17171C]">
+    <div className="bg-white dark:bg-[#17171C]">
       {/* Hero section */}
       <div className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-900/10 via-amber-900/5 to-[#17171C] blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white dark:from-amber-900/10 dark:via-amber-900/5 dark:to-[#17171C] blur-[2px]" />
         </div>
 
         <div className="mx-auto max-w-[84rem] px-6 py-32 sm:py-40 lg:px-8">
@@ -86,14 +86,14 @@ export default function Hardware() {
             <motion.div variants={floatingAnimation} className="relative">
               <motion.h1 
                 variants={fadeInUp}
-                className="relative text-5xl font-bold tracking-tight text-white sm:text-7xl"
+                className="relative text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-7xl"
               >
                 Think Hardware
               </motion.h1>
             </motion.div>
             <motion.p 
               variants={fadeInUp}
-              className="mt-8 text-xl leading-8 text-gray-300 max-w-2xl"
+              className="mt-8 text-xl leading-8 text-gray-600 dark:text-gray-300 max-w-2xl"
             >
               Building innovative hardware solutions that transform ideas into tangible products and systems.
             </motion.p>
@@ -103,10 +103,10 @@ export default function Hardware() {
             >
               <Link
                 href="/contact"
-                className="group relative rounded-full px-8 py-4 text-base font-semibold text-amber-400"
+                className="group relative rounded-full px-8 py-4 text-base font-semibold text-amber-500 dark:text-amber-400"
               >
-                <div className="absolute inset-0 rounded-full bg-amber-600/10 group-hover:bg-amber-600/20 transition-all duration-700" />
-                <div className="absolute -inset-0.5 rounded-full bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                <div className="absolute inset-0 rounded-full bg-amber-500/10 dark:bg-amber-600/10 group-hover:bg-amber-500/20 dark:group-hover:bg-amber-600/20 transition-all duration-700" />
+                <div className="absolute -inset-0.5 rounded-full bg-amber-500/20 dark:bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-700" />
                 <span className="relative">Start your project →</span>
               </Link>
             </motion.div>
@@ -125,19 +125,19 @@ export default function Hardware() {
         >
           <motion.h2 
             variants={fadeInUp}
-            className="text-base font-semibold leading-7 text-amber-400"
+            className="text-base font-semibold leading-7 text-amber-500 dark:text-amber-400"
           >
             Our Services
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
-            className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl"
+            className="mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"
           >
             Hardware Solutions
           </motion.p>
           <motion.p 
             variants={fadeInUp}
-            className="mt-8 text-xl leading-8 text-gray-300"
+            className="mt-8 text-xl leading-8 text-gray-600 dark:text-gray-300"
           >
             We design and manufacture cutting-edge hardware solutions for diverse industries and applications.
           </motion.p>
@@ -155,15 +155,15 @@ export default function Hardware() {
                 className="h-full"
               >
                 <div className="group relative h-full">
-                  <div className="absolute -inset-2 rounded-3xl bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />
-                  <div className="relative overflow-hidden rounded-2xl bg-[#1F1F28] p-6 h-full border border-amber-600/10 group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
-                    <dt className="flex flex-col gap-4 text-lg font-semibold leading-7 text-white">
-                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-amber-600/10 text-2xl group-hover:bg-amber-600/20 transition-all duration-700">
+                  <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />
+                  <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#1F1F28] p-6 h-full border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
+                    <dt className="flex flex-col gap-4 text-lg font-semibold leading-7 text-gray-900 dark:text-white">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-amber-500/10 dark:bg-amber-600/10 text-2xl group-hover:bg-amber-500/20 dark:group-hover:bg-amber-600/20 transition-all duration-700">
                         {service.icon}
                       </span>
-                      <span className="group-hover:text-amber-400 transition-colors duration-700">{service.name}</span>
+                      <span className="group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-700">{service.name}</span>
                     </dt>
-                    <dd className="mt-4 text-base leading-7 text-gray-300">
+                    <dd className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
                       <p>{service.description}</p>
                     </dd>
                   </div>
@@ -185,13 +185,13 @@ export default function Hardware() {
         >
           <motion.h2 
             variants={fadeInUp}
-            className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
+            className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"
           >
             Technologies
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
-            className="mt-8 text-xl leading-8 text-gray-300"
+            className="mt-8 text-xl leading-8 text-gray-600 dark:text-gray-300"
           >
             We utilize advanced manufacturing technologies and design tools.
           </motion.p>
@@ -211,9 +211,9 @@ export default function Hardware() {
                 variants={fadeInUp}
                 className="group relative"
               >
-                <div className="absolute -inset-1 rounded-xl bg-amber-600/10 opacity-0 blur-lg group-hover:opacity-100 transition-all duration-700" />
-                <div className="relative overflow-hidden rounded-xl bg-[#1F1F28] px-6 py-4 text-base font-medium text-gray-300 border border-amber-600/10 group-hover:border-amber-600/20 backdrop-blur-sm transition-all duration-700">
-                  <span className="relative group-hover:text-amber-400 transition-colors duration-700">{tech}</span>
+                <div className="absolute -inset-1 rounded-xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-lg group-hover:opacity-100 transition-all duration-700" />
+                <div className="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-[#1F1F28] px-6 py-4 text-base font-medium text-gray-900 dark:text-gray-300 border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 backdrop-blur-sm transition-all duration-700">
+                  <span className="relative group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-700">{tech}</span>
                 </div>
               </motion.div>
             ))}
@@ -224,24 +224,24 @@ export default function Hardware() {
       {/* CTA section */}
       <div className="mx-auto max-w-[84rem] px-6 py-32 sm:py-40 lg:px-8">
         <div className="relative mx-auto max-w-2xl text-center">
-          <h2 className="relative text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="relative text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
             Ready to build something great?
           </h2>
-          <p className="relative mx-auto mt-8 max-w-2xl text-xl leading-8 text-gray-300">
+          <p className="relative mx-auto mt-8 max-w-2xl text-xl leading-8 text-gray-600 dark:text-gray-300">
             Let's create innovative hardware solutions that bring your ideas to reality.
           </p>
           <div className="relative mt-12 flex items-center justify-center gap-x-8">
             <Link
               href="/contact"
-              className="group relative rounded-full px-8 py-4 text-base font-semibold text-amber-400"
+              className="group relative rounded-full px-8 py-4 text-base font-semibold text-amber-500 dark:text-amber-400"
             >
-              <div className="absolute inset-0 rounded-full bg-amber-600/10 group-hover:bg-amber-600/20 transition-all duration-700" />
-              <div className="absolute -inset-0.5 rounded-full bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-700" />
+              <div className="absolute inset-0 rounded-full bg-amber-500/10 dark:bg-amber-600/10 group-hover:bg-amber-500/20 dark:group-hover:bg-amber-600/20 transition-all duration-700" />
+              <div className="absolute -inset-0.5 rounded-full bg-amber-500/20 dark:bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-700" />
               <span className="relative">Get started →</span>
             </Link>
             <Link
               href="/about"
-              className="text-base font-semibold leading-6 text-white hover:text-amber-400 transition-colors duration-700"
+              className="text-base font-semibold leading-6 text-gray-900 hover:text-amber-500 dark:text-white dark:hover:text-amber-400 transition-colors duration-700"
             >
               Learn more <span aria-hidden="true">→</span>
             </Link>

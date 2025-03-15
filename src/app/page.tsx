@@ -62,11 +62,11 @@ const floatingAnimation = {
 
 export default function Home() {
   return (
-    <div className="bg-[#17171C]">
+    <div className="bg-white dark:bg-[#17171C]">
       {/* Hero section */}
       <div className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-900/10 to-[#17171C] blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white dark:from-amber-900/10 dark:via-amber-900/5 dark:to-[#17171C] blur-[1px]" />
         </div>
 
         <div className="mx-auto max-w-7xl px-6 py-32 sm:py-48 lg:px-8">
@@ -79,14 +79,14 @@ export default function Home() {
             <motion.div variants={floatingAnimation} className="relative">
               <motion.h1 
                 variants={fadeInUp}
-                className="relative text-4xl font-bold tracking-tight text-white sm:text-6xl"
+                className="relative text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
               >
                 Engineering the Future of Technology
               </motion.h1>
             </motion.div>
             <motion.p 
               variants={fadeInUp}
-              className="mt-6 text-lg leading-8 text-gray-300"
+              className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
             >
               Think Industries is a pioneering technology company specializing in software, electronics, hardware, engineering services, and advanced research.
             </motion.p>
@@ -124,13 +124,13 @@ export default function Home() {
         >
           <motion.h2 
             variants={fadeInUp}
-            className="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
           >
             Our Divisions
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
-            className="mt-6 text-lg leading-8 text-gray-300"
+            className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
           >
             Explore our specialized divisions, each focused on pushing the boundaries of technology and innovation.
           </motion.p>
@@ -147,16 +147,16 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Link href={division.href} className="group relative block">
-                  <div className="absolute -inset-2 rounded-3xl bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-500" />
-                  <div className="relative overflow-hidden rounded-2xl bg-[#1F1F28] px-6 py-8 h-full border border-amber-600/10 group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-500">
+                  <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-500" />
+                  <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#1F1F28] px-6 py-8 h-full border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-500">
                     <div className="relative">
-                      <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-white">
-                        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-amber-600/10 text-2xl group-hover:bg-amber-600/20 transition-all duration-500">
+                      <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-amber-500/10 dark:bg-amber-600/10 text-2xl group-hover:bg-amber-500/20 dark:group-hover:bg-amber-600/20 transition-all duration-500">
                           {division.icon}
                         </span>
-                        <span className="group-hover:text-amber-400 transition-colors duration-500">{division.name}</span>
+                        <span className="group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-500">{division.name}</span>
                       </dt>
-                      <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300">
+                      <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                         <p className="flex-auto">{division.description}</p>
                       </dd>
                     </div>
@@ -171,24 +171,24 @@ export default function Home() {
       {/* CTA section */}
       <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
         <div className="relative mx-auto max-w-2xl text-center">
-          <h2 className="relative text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="relative text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Ready to innovate with us?
           </h2>
-          <p className="relative mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
+          <p className="relative mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
             Let's discuss how our expertise can help bring your ideas to life and drive technological advancement.
           </p>
           <div className="relative mt-10 flex items-center justify-center gap-x-6">
             <Link
               href="/contact"
-              className="group relative rounded-full px-6 py-3 text-sm font-semibold text-amber-400"
+              className="group relative rounded-full px-6 py-3 text-sm font-semibold text-amber-500 dark:text-amber-400"
             >
-              <div className="absolute inset-0 rounded-full bg-amber-600/10 group-hover:bg-amber-600/20 transition-all duration-500" />
-              <div className="absolute -inset-0.5 rounded-full bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <div className="absolute inset-0 rounded-full bg-amber-500/10 dark:bg-amber-600/10 group-hover:bg-amber-500/20 dark:group-hover:bg-amber-600/20 transition-all duration-500" />
+              <div className="absolute -inset-0.5 rounded-full bg-amber-500/20 dark:bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-500" />
               <span className="relative">Get started</span>
             </Link>
             <Link
               href="/about"
-              className="text-sm font-semibold leading-6 text-white hover:text-amber-400 transition-colors duration-500"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-amber-500 dark:text-white dark:hover:text-amber-400 transition-colors duration-500"
             >
               Learn more <span aria-hidden="true">→</span>
             </Link>

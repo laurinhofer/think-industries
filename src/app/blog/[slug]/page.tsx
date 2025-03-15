@@ -252,16 +252,16 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="bg-[#17171C] px-6 py-24 sm:py-32 lg:px-8">
+      <div className="bg-white dark:bg-[#17171C] px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Post not found</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Post not found</h2>
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
             The blog post you're looking for doesn't exist.
           </p>
           <div className="mt-10">
             <Link
               href="/blog"
-              className="text-sm font-semibold leading-6 text-amber-400 hover:text-amber-300"
+              className="text-sm font-semibold leading-6 text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300"
             >
               ← Back to blog
             </Link>
@@ -272,7 +272,7 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="bg-[#17171C] px-6 py-24 sm:py-32 lg:px-8">
+    <div className="bg-white dark:bg-[#17171C] px-6 py-24 sm:py-32 lg:px-8">
       <motion.article
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -281,37 +281,37 @@ export default function BlogPost() {
       >
         <div className="mx-auto max-w-2xl text-center">
           <div className="flex justify-center items-center gap-x-4 text-xs">
-            <time dateTime={post.date} className="text-gray-400">
+            <time dateTime={post.date} className="text-gray-500 dark:text-gray-400">
               {new Date(post.date).toLocaleDateString('en-US', {
                 month: 'long',
                 day: 'numeric',
                 year: 'numeric',
               })}
             </time>
-            <span className="relative z-10 rounded-full bg-amber-600/10 px-3 py-1.5 font-medium text-amber-400">
+            <span className="relative z-10 rounded-full bg-amber-500/10 dark:bg-amber-600/10 px-3 py-1.5 font-medium text-amber-500 dark:text-amber-400">
               {post.category}
             </span>
           </div>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="mt-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
             {post.title}
           </h1>
           <div className="mt-4 text-sm leading-6">
-            <p className="font-semibold text-white">By {post.author}</p>
+            <p className="font-semibold text-gray-900 dark:text-white">By {post.author}</p>
           </div>
         </div>
 
-        <div className="prose prose-lg prose-invert prose-amber mx-auto mt-16">
+        <div className="prose prose-lg mx-auto mt-16">
           {post.content.split('\n').map((paragraph, index) => (
-            <p key={index} className="mt-4 text-gray-300">
+            <p key={index} className="mt-4 text-gray-600 dark:text-gray-300">
               {paragraph}
             </p>
           ))}
         </div>
 
-        <div className="mt-16 border-t border-amber-600/10 pt-8">
+        <div className="mt-16 border-t border-gray-200 dark:border-amber-600/10 pt-8">
           <Link
             href="/blog"
-            className="text-sm font-semibold leading-6 text-amber-400 hover:text-amber-300"
+            className="text-sm font-semibold leading-6 text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300"
           >
             ← Back to blog
           </Link>

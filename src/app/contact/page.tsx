@@ -31,7 +31,7 @@ export default function Contact() {
     email: '',
     company: '',
     message: '',
-    division: 'general',
+    division: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -61,7 +61,7 @@ export default function Contact() {
         email: '',
         company: '',
         message: '',
-        division: 'general',
+        division: '',
       });
     } catch (error) {
       setStatus('error');
@@ -75,11 +75,11 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-[#17171C]">
+    <div className="bg-white dark:bg-[#17171C]">
       {/* Hero section */}
       <div className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-900/10 to-[#17171C] blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white dark:from-amber-900/10 dark:via-amber-900/5 dark:to-[#17171C] blur-[2px]" />
         </div>
 
         <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
@@ -91,15 +91,18 @@ export default function Contact() {
           >
             <motion.h1 
               variants={fadeInUp}
-              className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+              className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
             >
               Contact Us
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="mt-6 text-lg leading-8 text-gray-300"
+              className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
             >
-              Have a project in mind? Get in touch with us to discuss how we can help bring your ideas to life.
+              Have a project in mind? Get in touch with us to discuss how we can help bring your ideas to life. 
+              <br />
+              <br />
+              laurinhofer34@icloud.com
             </motion.p>
           </motion.div>
         </div>
@@ -107,132 +110,111 @@ export default function Contact() {
 
       {/* Contact form section */}
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-        <motion.div
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="mx-auto max-w-2xl"
-        >
+        <div className="mx-auto max-w-2xl">
           <form onSubmit={handleSubmit} className="space-y-8">
-            <motion.div variants={fadeInUp}>
-              <label htmlFor="division" className="block text-sm font-medium leading-6 text-amber-400">
-                Division
-              </label>
-              <select
-                id="division"
-                name="division"
-                value={formData.division}
-                onChange={handleChange}
-                className="mt-2 block w-full rounded-md border-0 bg-[#1F1F28] py-3 px-4 text-white shadow-sm ring-1 ring-inset ring-amber-600/10 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
-              >
-                <option value="general">General Inquiry</option>
-                <option value="software">Think Software</option>
-                <option value="electronics">Think Electronics</option>
-                <option value="hardware">Think Hardware</option>
-                <option value="engineering">Think Engineering</option>
-                <option value="labs">Think Labs</option>
-              </select>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <label htmlFor="name" className="block text-sm font-medium leading-6 text-amber-400">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 Name
               </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="mt-2 block w-full rounded-md border-0 bg-[#1F1F28] py-3 px-4 text-white shadow-sm ring-1 ring-inset ring-amber-600/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
-              />
-            </motion.div>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  autoComplete="name"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
-            <motion.div variants={fadeInUp}>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-amber-400">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 Email
               </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="mt-2 block w-full rounded-md border-0 bg-[#1F1F28] py-3 px-4 text-white shadow-sm ring-1 ring-inset ring-amber-600/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
-              />
-            </motion.div>
+              <div className="mt-2">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  autoComplete="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
-            <motion.div variants={fadeInUp}>
-              <label htmlFor="company" className="block text-sm font-medium leading-6 text-amber-400">
+            <div>
+              <label htmlFor="company" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 Company
               </label>
-              <input
-                type="text"
-                name="company"
-                id="company"
-                value={formData.company}
-                onChange={handleChange}
-                className="mt-2 block w-full rounded-md border-0 bg-[#1F1F28] py-3 px-4 text-white shadow-sm ring-1 ring-inset ring-amber-600/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
-              />
-            </motion.div>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="company"
+                  id="company"
+                  autoComplete="organization"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
-            <motion.div variants={fadeInUp}>
-              <label htmlFor="message" className="block text-sm font-medium leading-6 text-amber-400">
+            <div>
+              <label htmlFor="division" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
+                Division
+              </label>
+              <div className="mt-2">
+                <select
+                  id="division"
+                  name="division"
+                  required
+                  value={formData.division}
+                  onChange={(e) => setFormData({ ...formData, division: e.target.value })}
+                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
+                >
+                  <option value="">Select a division</option>
+                  <option value="software">Think Software</option>
+                  <option value="electronics">Think Electronics</option>
+                  <option value="hardware">Think Hardware</option>
+                  <option value="engineering">Think Engineering</option>
+                  <option value="labs">Think Labs</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 Message
               </label>
-              <textarea
-                name="message"
-                id="message"
-                rows={6}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="mt-2 block w-full rounded-md border-0 bg-[#1F1F28] py-3 px-4 text-white shadow-sm ring-1 ring-inset ring-amber-600/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
-              />
-            </motion.div>
+              <div className="mt-2">
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
-            <motion.div variants={fadeInUp}>
+            <div>
               <button
                 type="submit"
-                disabled={status === 'loading'}
-                className="group relative w-full rounded-full px-6 py-3 text-sm font-semibold text-amber-400 disabled:opacity-50"
+                className="group relative w-full rounded-md bg-amber-500/10 dark:bg-amber-600/10 px-3.5 py-2.5 text-center text-sm font-semibold text-amber-500 dark:text-amber-400 shadow-sm hover:bg-amber-500/20 dark:hover:bg-amber-600/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:focus-visible:outline-amber-400 transition-all duration-300"
               >
-                <div className="absolute inset-0 rounded-full bg-amber-600/10 group-hover:bg-amber-600/20 transition-all duration-500" />
-                <div className="absolute -inset-0.5 rounded-full bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <span className="relative">
-                  {status === 'loading' ? 'Sending...' : 'Send Message'}
-                </span>
+                Send message
               </button>
-            </motion.div>
-
-            {status === 'success' && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="rounded-md bg-green-500/10 p-4"
-              >
-                <p className="text-sm text-green-400">
-                  Thank you for your message! We'll get back to you soon.
-                </p>
-              </motion.div>
-            )}
-
-            {status === 'error' && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="rounded-md bg-red-500/10 p-4"
-              >
-                <p className="text-sm text-red-400">
-                  {errorMessage}
-                </p>
-              </motion.div>
-            )}
+            </div>
           </form>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
