@@ -28,10 +28,10 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-600 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400"
+            className="-m-2.5 inline-flex items-center justify-center rounded-lg p-2.5 text-gray-700 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">Open menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -40,73 +40,85 @@ export default function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 transition-all duration-300 relative group"
+              className="text-sm font-semibold leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400"
             >
-              <span className="relative">
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-500 dark:bg-amber-400 origin-bottom transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
-              </span>
+              {item.name}
             </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link 
-            href="/contact" 
-            className="relative group text-sm font-semibold leading-6 text-amber-500 dark:text-amber-400"
+          <Link
+            href="/contact"
+            className="group relative rounded-2xl px-6 py-2.5 text-sm font-semibold text-gray-900 dark:text-white"
           >
-            <span className="relative z-10 px-4 py-2 bg-gray-50/50 dark:bg-gray-800/50 border border-amber-500/20 dark:border-amber-600/20 rounded-md group-hover:bg-gray-50/80 dark:group-hover:bg-gray-800/80 group-hover:border-amber-500/40 dark:group-hover:border-amber-600/40 backdrop-blur-sm transition-all">
-              Contact Us
-            </span>
-            <div className="absolute -inset-x-2 -inset-y-1 bg-amber-500/10 dark:bg-amber-600/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <div className="absolute inset-0 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 dark:border-white/5 shadow-lg group-hover:shadow-xl transition-all duration-300" />
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/20 dark:from-amber-400/20 dark:to-amber-600/20 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <span className="relative z-10 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">Contact Us</span>
           </Link>
         </div>
       </nav>
       {/* Mobile menu */}
       <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'}`}>
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" aria-hidden="true" onClick={() => setMobileMenuOpen(false)} />
-        <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/80 dark:bg-[#17171C]/80 backdrop-blur-2xl px-6 py-6 sm:max-w-sm border-l border-gray-200/30 dark:border-amber-600/10 supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-[#17171C]/60">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="-m-1.5 p-1.5">
+        {/* Semi-transparent backdrop */}
+        <div 
+          className={`fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileMenuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          aria-hidden="true" 
+          onClick={() => setMobileMenuOpen(false)} 
+        />
+        
+        {/* Mobile menu panel */}
+        <div 
+          className={`fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/80 dark:bg-[#17171C]/80 backdrop-blur-2xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-300 transform ${
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex items-center justify-between mb-8">
+            <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
               <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-amber-700 dark:from-amber-400 dark:to-amber-600 bg-clip-text text-transparent">
                 Think Industries
               </span>
             </Link>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-600 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400"
+              className="-m-2.5 rounded-lg p-2.5 text-gray-700 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
+          
+          {/* Navigation links */}
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-200/30 dark:divide-amber-600/10">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="group -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 hover:bg-gray-50/50 dark:hover:bg-gray-800/50 relative overflow-hidden transition-all duration-300"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span className="relative z-10 block transform group-hover:translate-y-0 transition-transform duration-300">
-                      {item.name}
-                    </span>
-                    <div className="absolute inset-0 bg-amber-500/10 dark:bg-amber-600/10 rounded-lg blur opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300" />
-                  </Link>
-                ))}
-              </div>
-              <div className="py-6">
+            <div className="space-y-2">
+              {navigation.map((item) => (
                 <Link
-                  href="/contact"
-                  className="group -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-amber-500 dark:text-amber-400 relative"
+                  key={item.name}
+                  href={item.href}
+                  className="group -mx-3 block rounded-lg px-4 py-3.5 text-base font-semibold text-gray-900 dark:text-white hover:bg-amber-500/10 dark:hover:bg-amber-600/10 transition-all duration-300"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span className="relative z-10 block text-center bg-gray-50/50 dark:bg-gray-800/50 border border-amber-500/20 dark:border-amber-600/20 rounded-md py-2 group-hover:bg-gray-50/80 dark:group-hover:bg-gray-800/80 group-hover:border-amber-500/40 dark:group-hover:border-amber-600/40 backdrop-blur-sm transition-all">
-                    Contact Us
-                  </span>
-                  <div className="absolute inset-0 bg-amber-500/10 dark:bg-amber-600/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <div className="flex items-center justify-between">
+                    <span>{item.name}</span>
+                    <span className="text-amber-500 dark:text-amber-400 opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                      →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+              
+              {/* Contact button */}
+              <div className="mt-8 pt-6 border-t border-gray-200/30 dark:border-amber-600/10">
+                <Link
+                  href="/contact"
+                  className="group relative rounded-2xl px-6 py-3 text-base font-semibold text-gray-900 dark:text-white"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 dark:border-white/5 shadow-lg group-hover:shadow-xl transition-all duration-300" />
+                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/20 dark:from-amber-400/20 dark:to-amber-600/20 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <span className="relative z-10 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">Contact Us</span>
                 </Link>
               </div>
             </div>

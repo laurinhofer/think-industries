@@ -8,7 +8,7 @@ const executives = [
     name: 'Laurin Hofer',
     role: 'Founder & CEO',
     image: '/team/ceo.jpg',
-    bio: 'A visionary entrepreneur with a passion for innovation and technology. Laurin founded Think Industries with the mission to revolutionize the tech industry through integrated solutions across software, electronics, and hardware.',
+    bio: 'I founded Think Industries to revolutionize the tech industry by integrating software, electronics, and hardware into seamless, cutting-edge solutions. My goal is to push innovation forward and shape the future of technology.',
   },
 ];
 
@@ -53,15 +53,15 @@ const stats = [
 ];
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.2
     }
   }
 };
@@ -109,15 +109,18 @@ export default function About() {
       <motion.div 
         initial="initial"
         whileInView="animate"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-100px" }}
         variants={staggerContainer}
         className="mx-auto mt-16 max-w-7xl px-6 lg:px-8"
       >
         <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-4">
-          {stats.map((stat) => (
+          {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              variants={fadeInUp}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="mx-auto flex max-w-xs flex-col gap-y-4"
             >
               <dt className="text-base leading-7 text-gray-500 dark:text-gray-400">{stat.label}</dt>
@@ -142,14 +145,17 @@ export default function About() {
         <motion.div
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
           className="mx-auto mt-20 max-w-2xl lg:mx-0"
         >
-          {executives.map((person) => (
+          {executives.map((person, index) => (
             <motion.div
               key={person.name}
-              variants={fadeInUp}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="group relative"
             >
               <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />
@@ -189,13 +195,13 @@ export default function About() {
             { title: 'Excellence in Execution', description: 'Quality, precision, and performance are at the core of everything we build.' },
             { title: 'Collaboration & Synergy', description: 'Our divisions work seamlessly together to create holistic solutions.' },
             { title: 'Ethical Responsibility', description: 'We develop technology that benefits humanity and aligns with ethical standards.' },
-          ].map((value) => (
+          ].map((value, index) => (
             <motion.div
               key={value.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="group relative"
             >
               <div className="absolute -inset-2 rounded-xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-lg group-hover:opacity-100 transition-all duration-700" />
@@ -215,7 +221,7 @@ export default function About() {
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Division Leaders</h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Our division leaders are experts in their respective fields, driving innovation and excellence.
+            Our division leaders are experts in their respective fields, driving innovation and excellence. For now I lead each division but I'm always looking for new talents to join my team.
           </p>
         </div>
         <ul
@@ -225,10 +231,10 @@ export default function About() {
           {divisionLeads.map((person, index) => (
             <motion.li
               key={person.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="group relative"
             >
               <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />

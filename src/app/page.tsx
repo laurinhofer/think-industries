@@ -37,26 +37,16 @@ const divisions = [
 ];
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.2
     }
-  }
-};
-
-const floatingAnimation = {
-  initial: { y: 0 },
-  animate: { y: [-5, 5, -5] },
-  transition: { 
-    duration: 6,
-    repeat: Infinity,
-    ease: "easeInOut"
   }
 };
 
@@ -76,7 +66,7 @@ export default function Home() {
             variants={staggerContainer}
             className="mx-auto max-w-2xl text-center"
           >
-            <motion.div variants={floatingAnimation} className="relative">
+            <motion.div variants={fadeInUp} className="relative">
               <motion.h1 
                 variants={fadeInUp}
                 className="relative text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
@@ -90,23 +80,25 @@ export default function Home() {
             >
               Think Industries is a pioneering technology company specializing in software, electronics, hardware, engineering services, and advanced research.
             </motion.p>
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
-              className="mt-10 flex items-center justify-center gap-x-6"
+              className="mt-10 flex items-center justify-center gap-x-8"
             >
               <Link
                 href="/contact"
-                className="group relative rounded-full px-6 py-3 text-sm font-semibold text-amber-400"
+                className="group relative rounded-2xl px-8 py-4 text-base font-semibold text-gray-900 dark:text-white"
               >
-                <div className="absolute inset-0 rounded-full bg-amber-600/10 group-hover:bg-amber-600/20 transition-all duration-500" />
-                <div className="absolute -inset-0.5 rounded-full bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <span className="relative">Start a project</span>
+                <div className="absolute inset-0 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 dark:border-white/5 shadow-lg group-hover:shadow-xl transition-all duration-300" />
+                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/20 dark:from-amber-400/20 dark:to-amber-600/20 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                <span className="relative z-10 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">Start a project →</span>
               </Link>
               <Link
                 href="/about"
-                className="text-sm font-semibold leading-6 text-white hover:text-amber-400 transition-colors duration-500"
+                className="group relative rounded-2xl px-8 py-4 text-base font-semibold text-gray-900 dark:text-white"
               >
-                Learn more <span aria-hidden="true">→</span>
+                <div className="absolute inset-0 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 dark:border-white/5 shadow-lg group-hover:shadow-xl transition-all duration-300" />
+                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/20 dark:from-amber-400/20 dark:to-amber-600/20 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                <span className="relative z-10 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">Learn more →</span>
               </Link>
             </motion.div>
           </motion.div>
@@ -141,10 +133,10 @@ export default function Home() {
             {divisions.map((division, index) => (
               <motion.div
                 key={division.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1.2, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Link href={division.href} className="group relative block">
                   <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-500" />
@@ -177,20 +169,22 @@ export default function Home() {
           <p className="relative mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
             Let's discuss how our expertise can help bring your ideas to life and drive technological advancement.
           </p>
-          <div className="relative mt-10 flex items-center justify-center gap-x-6">
+          <div className="relative mt-10 flex items-center justify-center gap-x-8">
             <Link
               href="/contact"
-              className="group relative rounded-full px-6 py-3 text-sm font-semibold text-amber-500 dark:text-amber-400"
+              className="group relative rounded-2xl px-8 py-4 text-base font-semibold text-gray-900 dark:text-white"
             >
-              <div className="absolute inset-0 rounded-full bg-amber-500/10 dark:bg-amber-600/10 group-hover:bg-amber-500/20 dark:group-hover:bg-amber-600/20 transition-all duration-500" />
-              <div className="absolute -inset-0.5 rounded-full bg-amber-500/20 dark:bg-amber-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <span className="relative">Get started</span>
+              <div className="absolute inset-0 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 dark:border-white/5 shadow-lg group-hover:shadow-xl transition-all duration-300" />
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/20 dark:from-amber-400/20 dark:to-amber-600/20 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <span className="relative z-10 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">Get started →</span>
             </Link>
             <Link
               href="/about"
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-amber-500 dark:text-white dark:hover:text-amber-400 transition-colors duration-500"
+              className="group relative rounded-2xl px-8 py-4 text-base font-semibold text-gray-900 dark:text-white"
             >
-              Learn more <span aria-hidden="true">→</span>
+              <div className="absolute inset-0 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 dark:border-white/5 shadow-lg group-hover:shadow-xl transition-all duration-300" />
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/20 dark:from-amber-400/20 dark:to-amber-600/20 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <span className="relative z-10 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">Learn more →</span>
             </Link>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -9,71 +9,7 @@ const fadeInUp = {
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
 };
 
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-type FormData = {
-  name: string;
-  email: string;
-  company: string;
-  message: string;
-  division: string;
-};
-
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-    division: '',
-  });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Something went wrong');
-      }
-
-      setStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: '',
-        division: '',
-      });
-    } catch (error) {
-      setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong');
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
   return (
     <div className="bg-white dark:bg-[#17171C]">
       {/* Hero section */}
@@ -82,11 +18,10 @@ export default function Contact() {
           <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white dark:from-amber-900/10 dark:via-amber-900/5 dark:to-[#17171C] blur-[2px]" />
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <motion.div
             initial="initial"
             animate="animate"
-            variants={staggerContainer}
             className="mx-auto max-w-2xl lg:mx-0"
           >
             <motion.h1 
@@ -97,123 +32,55 @@ export default function Contact() {
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
+              className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300"
             >
-              Have a project in mind? Get in touch with us to discuss how we can help bring your ideas to life. 
-              <br />
-              <br />
-              laurinhofer34@icloud.com
+              Get in touch with us to discuss how we can help bring your ideas to life.
             </motion.p>
           </motion.div>
         </div>
       </div>
 
-      {/* Contact form section */}
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+      {/* Contact card section */}
+      <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-2xl">
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
-                Name
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  autoComplete="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group relative"
+          >
+            <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />
+            <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#1F1F28] p-8 flex flex-col md:flex-row gap-8 items-center border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
+              <div className="relative h-64 w-64 overflow-hidden rounded-full flex-shrink-0">
+                <Image
+                  src="/team/ceo.jpg"
+                  alt="Laurin Hofer"
+                  fill
+                  className="profile-image"
                 />
               </div>
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
-                Email
-              </label>
-              <div className="mt-2">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
-                />
+              <div>
+                <h3 className="text-2xl font-semibold leading-8 tracking-tight text-gray-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-700">
+                  Laurin Hofer
+                </h3>
+                <p className="text-lg leading-7 text-amber-500 dark:text-amber-400">Founder & CEO</p>
+                <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                  I founded Think Industries to revolutionize the tech industry by integrating software, electronics, and hardware into seamless, cutting-edge solutions. My goal is to push innovation forward and shape the future of technology.
+                </p>
+                <div className="mt-6">
+                  <a
+                    href="mailto:laurinhofer34@icloud.com"
+                    className="inline-flex items-center text-amber-500 dark:text-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-colors duration-300"
+                  >
+                    <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    laurinhofer34@icloud.com
+                  </a>
+                </div>
               </div>
             </div>
-
-            <div>
-              <label htmlFor="company" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
-                Company
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  autoComplete="organization"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="division" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
-                Division
-              </label>
-              <div className="mt-2">
-                <select
-                  id="division"
-                  name="division"
-                  required
-                  value={formData.division}
-                  onChange={(e) => setFormData({ ...formData, division: e.target.value })}
-                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
-                >
-                  <option value="">Select a division</option>
-                  <option value="software">Think Software</option>
-                  <option value="electronics">Think Electronics</option>
-                  <option value="hardware">Think Hardware</option>
-                  <option value="engineering">Think Engineering</option>
-                  <option value="labs">Think Labs</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
-                Message
-              </label>
-              <div className="mt-2">
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="block w-full rounded-md border-0 bg-gray-50 dark:bg-[#1F1F28] py-2 px-3.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-200 dark:ring-amber-600/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-amber-500 dark:focus:ring-amber-400 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="group relative w-full rounded-md bg-amber-500/10 dark:bg-amber-600/10 px-3.5 py-2.5 text-center text-sm font-semibold text-amber-500 dark:text-amber-400 shadow-sm hover:bg-amber-500/20 dark:hover:bg-amber-600/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 dark:focus-visible:outline-amber-400 transition-all duration-300"
-              >
-                Send message
-              </button>
-            </div>
-          </form>
+          </motion.div>
         </div>
       </div>
     </div>

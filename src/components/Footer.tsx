@@ -17,6 +17,8 @@ const navigation = {
   legal: [
     { name: 'Privacy', href: '/privacy' },
     { name: 'Terms', href: '/terms' },
+    { name: 'Cookie Policy', href: '/cookies' },
+    { name: 'Sitemap', href: '/sitemap' },
   ],
 };
 
@@ -45,7 +47,7 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.divisions.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400">
+                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 transition-colors duration-300">
                         {item.name}
                       </Link>
                     </li>
@@ -57,7 +59,7 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400">
+                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 transition-colors duration-300">
                         {item.name}
                       </Link>
                     </li>
@@ -71,7 +73,7 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400">
+                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 transition-colors duration-300">
                         {item.name}
                       </Link>
                     </li>
