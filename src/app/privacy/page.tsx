@@ -18,10 +18,16 @@ const staggerContainer = {
 
 export default function Privacy() {
   return (
-    <div className="bg-white dark:bg-[#17171C]">
+    <div className="relative min-h-screen bg-white dark:bg-[#0A0A0C]">
+      {/* Main background gradient that extends to the top */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/30 via-amber-500/20 to-white/0 dark:from-amber-900/30 dark:via-amber-900/20 dark:to-[#0A0A0C]/0 blur-2xl" />
+      </div>
+
+      {/* Hero section */}
       <div className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white dark:from-amber-900/10 dark:via-amber-900/5 dark:to-[#17171C] blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/20 via-amber-500/10 to-white/0 dark:from-amber-900/20 dark:via-amber-900/10 dark:to-[#0A0A0C]/0 blur-2xl" />
         </div>
 
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">

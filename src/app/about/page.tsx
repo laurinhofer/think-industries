@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const executives = [
   {
@@ -66,13 +67,41 @@ const staggerContainer = {
   }
 };
 
+const founderDetails = {
+  expertise: [
+    'Software Development',
+    'Electronics Engineering',
+    'Hardware Design',
+    'Project Management',
+    'Innovation Leadership'
+  ],
+  education: {
+    school: 'HTL Anichstraße',
+    degree: 'Electronics Engineering',
+    year: '2025'
+  },
+  experience: {
+    company: 'MIMM Engineering GmbH',
+    role: 'Software Engineer',
+    period: '2023 - Present',
+    description: 'Leading software development projects and implementing innovative solutions.'
+  }
+};
+
 export default function About() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <div className="bg-white dark:bg-[#17171C]">
+    <div className="relative min-h-screen bg-white dark:bg-[#0A0A0C]">
+      {/* Main background gradient that extends to the top */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/30 via-amber-500/20 to-white/0 dark:from-amber-900/30 dark:via-amber-900/20 dark:to-[#0A0A0C]/0 blur-2xl" />
+      </div>
+
       {/* Hero section */}
       <div className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white dark:from-amber-900/10 dark:via-amber-900/5 dark:to-[#17171C] blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/20 via-amber-500/10 to-white/0 dark:from-amber-900/20 dark:via-amber-900/10 dark:to-[#0A0A0C]/0 blur-2xl" />
         </div>
         
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
@@ -138,7 +167,7 @@ export default function About() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Our Founder
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
             Meet the visionary behind Think Industries, driving innovation and excellence in technology.
           </p>
         </div>
@@ -159,7 +188,10 @@ export default function About() {
               className="group relative"
             >
               <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />
-              <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#1F1F28] p-8 flex flex-col md:flex-row gap-8 items-center border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
+              <div 
+                className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#0A0A0C] p-8 flex flex-col md:flex-row gap-8 items-center border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700 cursor-pointer"
+                onClick={() => setExpanded(!expanded)}
+              >
                 <div className="relative h-64 w-64 overflow-hidden rounded-full flex-shrink-0">
                   <Image
                     src={person.image}
@@ -168,12 +200,58 @@ export default function About() {
                     className="profile-image"
                   />
                 </div>
-                <div>
+                <div className="flex-1">
                   <h3 className="text-2xl font-semibold leading-8 tracking-tight text-gray-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-700">
                     {person.name}
                   </h3>
                   <p className="text-lg leading-7 text-amber-500 dark:text-amber-400">{person.role}</p>
-                  <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">{person.bio}</p>
+                  <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-400">{person.bio}</p>
+                  
+                  {/* Expandable content */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: expanded ? 'auto' : 0 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-6 space-y-6">
+                      {/* Expertise */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Expertise</h4>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {founderDetails.expertise.map((skill, i) => (
+                            <span
+                              key={skill}
+                              className="inline-flex items-center rounded-full bg-amber-500/10 dark:bg-amber-600/10 px-3 py-1 text-sm font-medium text-amber-500 dark:text-amber-400"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Education */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Education</h4>
+                        <div className="mt-2">
+                          <p className="text-gray-600 dark:text-gray-400">{founderDetails.education.school}</p>
+                          <p className="text-gray-600 dark:text-gray-400">{founderDetails.education.degree}</p>
+                          <p className="text-gray-600 dark:text-gray-400">{founderDetails.education.year}</p>
+                        </div>
+                      </div>
+
+                      {/* Experience */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Experience</h4>
+                        <div className="mt-2">
+                          <p className="text-gray-600 dark:text-gray-400">{founderDetails.experience.company}</p>
+                          <p className="text-gray-600 dark:text-gray-400">{founderDetails.experience.role}</p>
+                          <p className="text-gray-600 dark:text-gray-400">{founderDetails.experience.period}</p>
+                          <p className="text-gray-600 dark:text-gray-400">{founderDetails.experience.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -205,7 +283,7 @@ export default function About() {
               className="group relative"
             >
               <div className="absolute -inset-2 rounded-xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-lg group-hover:opacity-100 transition-all duration-700" />
-              <div className="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-[#1F1F28] p-6 border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
+              <div className="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-[#0A0A0C] p-6 border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
                 <dt className="font-semibold text-gray-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-700">
                   {value.title}
                 </dt>
@@ -238,7 +316,7 @@ export default function About() {
               className="group relative"
             >
               <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />
-              <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#1F1F28] p-8 border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
+              <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#0A0A0C] p-8 border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
                 <div className="flex flex-col gap-6">
                   <div className="text-6xl flex justify-center items-center h-24 w-24 rounded-full bg-amber-500/10 dark:bg-amber-600/10 group-hover:bg-amber-500/20 dark:group-hover:bg-amber-600/20 transition-all duration-700">
                     {person.image}

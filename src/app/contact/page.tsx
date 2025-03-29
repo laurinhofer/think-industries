@@ -11,11 +11,16 @@ const fadeInUp = {
 
 export default function Contact() {
   return (
-    <div className="bg-white dark:bg-[#17171C]">
+    <div className="relative min-h-screen bg-white dark:bg-[#0A0A0C]">
+      {/* Main background gradient that extends to the top */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/30 via-amber-500/20 to-white/0 dark:from-amber-900/30 dark:via-amber-900/20 dark:to-[#0A0A0C]/0 blur-2xl" />
+      </div>
+
       {/* Hero section */}
       <div className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white dark:from-amber-900/10 dark:via-amber-900/5 dark:to-[#17171C] blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-500/20 via-amber-500/10 to-white/0 dark:from-amber-900/20 dark:via-amber-900/10 dark:to-[#0A0A0C]/0 blur-2xl" />
         </div>
 
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
@@ -50,7 +55,7 @@ export default function Contact() {
             className="group relative"
           >
             <div className="absolute -inset-2 rounded-3xl bg-amber-500/10 dark:bg-amber-600/10 opacity-0 blur-xl group-hover:opacity-100 transition-all duration-700" />
-            <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#1F1F28] p-8 flex flex-col md:flex-row gap-8 items-center border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
+            <div className="relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-[#121214] p-8 flex flex-col md:flex-row gap-8 items-center border border-gray-200 dark:border-amber-600/10 group-hover:border-amber-500/20 dark:group-hover:border-amber-600/20 shadow-lg group-hover:shadow-xl backdrop-blur-sm transition-all duration-700">
               <div className="relative h-64 w-64 overflow-hidden rounded-full flex-shrink-0">
                 <Image
                   src="/team/ceo.jpg"
