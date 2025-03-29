@@ -16,7 +16,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full bg-white/60 dark:bg-[#17171C]/60 backdrop-blur-xl z-50 border-b border-gray-200/30 dark:border-amber-600/10 supports-[backdrop-filter]:bg-white/40 dark:supports-[backdrop-filter]:bg-[#17171C]/40">
+    <header className="fixed w-full bg-white/60 dark:bg-[#0A0A0C]/60 backdrop-blur-xl z-50 border-b border-gray-200/30 dark:border-amber-600/10 supports-[backdrop-filter]:bg-white/40 dark:supports-[backdrop-filter]:bg-[#0A0A0C]/40">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
@@ -28,7 +28,7 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-lg p-2.5 text-gray-700 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
+            className="-m-2.5 inline-flex items-center justify-center rounded-lg p-2.5 text-gray-700 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open menu</span>
@@ -70,7 +70,7 @@ export default function Navbar() {
         
         {/* Mobile menu panel */}
         <div 
-          className={`fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/80 dark:bg-[#17171C]/80 backdrop-blur-2xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-300 transform ${
+          className={`fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/80 dark:bg-[#0A0A0C]/80 backdrop-blur-2xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-300 transform ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -82,7 +82,7 @@ export default function Navbar() {
             </Link>
             <button
               type="button"
-              className="-m-2.5 rounded-lg p-2.5 text-gray-700 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
+              className="-m-2.5 rounded-lg p-2.5 text-gray-700 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>

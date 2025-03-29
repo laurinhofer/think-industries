@@ -24,7 +24,7 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-[#17171C] border-t border-gray-200 dark:border-amber-600/10" aria-labelledby="footer-heading">
+    <footer className="bg-white dark:bg-[#0A0A0C] border-t border-gray-200 dark:border-amber-600/10" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -36,7 +36,7 @@ export default function Footer() {
                 Think Industries
               </span>
             </Link>
-            <p className="text-sm leading-6 text-gray-600 dark:text-gray-300">
+            <p className="text-sm leading-6 text-gray-600 dark:text-gray-400">
               Engineering the future through innovation in software, electronics, hardware, and advanced research.
             </p>
           </div>
@@ -47,7 +47,7 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.divisions.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 transition-colors duration-300">
+                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 transition-colors duration-300">
                         {item.name}
                       </Link>
                     </li>
@@ -59,7 +59,7 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 transition-colors duration-300">
+                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 transition-colors duration-300">
                         {item.name}
                       </Link>
                     </li>
@@ -73,7 +73,7 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400 transition-colors duration-300">
+                      <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 transition-colors duration-300">
                         {item.name}
                       </Link>
                     </li>
